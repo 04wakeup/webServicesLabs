@@ -1,0 +1,32 @@
+{
+  "movies": [
+    {
+      "id": 0,
+      "name": "Raiders of the Lost Ark",
+      "link": "https://en.wikipedia.org/wiki/Raiders_of_the_Lost_Ark",
+      "color": "olive",
+      "checked": true
+    },
+    {
+      "id": 1,
+      "name": "Airplane!",
+      "link": "https://en.wikipedia.org/wiki/Airplane!",
+      "color": "green",
+      "checked": true
+    },
+    {
+      "id": 2,
+      "name": "Pan's Labyrinth",
+      "link": "https://en.wikipedia.org/wiki/Pan%27s_Labyrinth",
+      "color": "maroon",
+      "checked": true
+    },
+    {
+      "id": 3,
+      "name": "Avengers: Endgame",
+      "link": "https://en.wikipedia.org/wiki/Avengers:_Endgame",
+      "color": "brown",
+      "checked": true
+    }
+  ]
+}
