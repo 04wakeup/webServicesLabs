@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() { 
       return (
         <header>
-            <StyledTitle>ICS 221 Message Board App</StyledTitle>
+        <StyledTitle>{this.props.text}</StyledTitle>
         </header>
       );
     }

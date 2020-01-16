@@ -16,9 +16,9 @@ class ListTable extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Message</th>
+              <th>{this.props.colText1}</th>
+              <th>{this.props.colText2}</th>
+              <th>{this.props.colText3}</th>
             </tr>
           </thead>
           <tbody>{rows}</tbody>

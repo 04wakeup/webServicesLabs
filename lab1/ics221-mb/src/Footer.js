@@ -6,7 +6,7 @@ class Footer extends React.Component {
     render() { 
       return (
         <header>
-            <StyledCopyright>©2020 Jonghyun Choi</StyledCopyright>
+            <StyledCopyright>{this.props.text}</StyledCopyright>
         </header>
       );
     }
