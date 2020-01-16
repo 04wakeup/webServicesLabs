@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css'; 
 import * as serviceWorker from './serviceWorker'; 
 import ListMessageTable from './ListMessageTable'
- 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
   const MESSAGES = [
     {order: '1', name: 'Bill', message: 'Hi All!'}, 
     {order: '2', name: 'Ann', message: 'ICS 221 is fun'},
