@@ -3,10 +3,73 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Header from './Header'
+import Footer from './Footer'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ class ListRow extends React.Component {
+    render() {
+      const message = this.props.message;  // each data to msg 
+  
+      return (
+        <tr>
+          <td>{message.order}</td>
+          <td>{message.name}</td>
+          <td>{message.message}</td>
+        </tr>
+      );
+    }
+  } 
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+class ListTable extends React.Component {
+    render() {
+      const rows = [];       
+      this.props.messages.forEach((eachLine) => {  
+        rows.push(
+          <ListRow message = {eachLine}   // 받아먹을 변수를 정의해서 값 할당
+          key={eachLine.order} />         // 마지막 라인에 추가됨
+        ); 
+      });
+  
+      return (
+        <table>
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Name</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>{rows}</tbody>
+        </table>
+      );
+    }
+  }
+    
+  class ListMessageTable extends React.Component {
+    render() {
+      return (
+        <div>
+          <Header />
+          <ListTable messages={this.props.messages} />
+          <Footer />
+        </div>
+      );
+    }
+  } 
+  
+  const MESSAGES = [
+    {order: '1', name: 'Bill', message: 'Hi All!'}, 
+    {order: '2', name: 'Ann', message: 'ICS 221 is fun'},
+    {order: '3', name: 'Johnny', message: 'I\'m stranded!'},
+    {order: '4', name: 'Barb', message: 'Hi'},
+    {order: '5', name: 'Frank', message: 'Who\'s gired?'},
+    {order: '6', name: 'Sarah', message: 'I heart React'}
+  ];
+
+  ReactDOM.render( 
+    <ListMessageTable messages = {MESSAGES}/>,
+    document.getElementById('root')
+  );
+ 
 serviceWorker.unregister();
+ 
