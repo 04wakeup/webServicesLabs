@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'; 
+import './index.css'; 
+import ListTable from './ListTable'
+import Header from './Header'
+import Footer from './Footer'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class ListMessageTable extends React.Component {
+    render() { 
+      return (
+        <div>
+          <Header text={this.props.headerText} />
+          <ListTable messages={this.props.messages} colText1={this.props.colText1} colText2={this.props.colText2} colText3={this.props.colText3}  />
+          <Footer text={this.props.footerText} />
+        </div>
+      );
+    }
+  } 
 
-export default App;
+export default ListMessageTable;

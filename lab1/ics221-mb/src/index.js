@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'; 
 import * as serviceWorker from './serviceWorker'; 
-import ListMessageTable from './ListMessageTable'
+import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
   const MESSAGES = [
@@ -21,7 +21,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
   const colText3 = 'Message';
 
   ReactDOM.render( 
-    <ListMessageTable messages={MESSAGES} headerText={headerText} footerText={footerText} colText1={colText1} colText2={colText2} colText3={colText3} />,
+    <App messages={MESSAGES} headerText={headerText} footerText={footerText} colText1={colText1} colText2={colText2} colText3={colText3} />,
     document.getElementById('root')
   );
  
