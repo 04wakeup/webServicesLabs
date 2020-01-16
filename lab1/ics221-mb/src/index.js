@@ -2,60 +2,59 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-import Header from './Header'
-import Footer from './Footer'
+import * as serviceWorker from './serviceWorker'; 
+import ListMessageTable from './ListMessageTable'
 
- class ListRow extends React.Component {
-    render() {
-      const message = this.props.message;  // each data to msg 
+//  class ListRow extends React.Component {
+//     render() {
+//       const message = this.props.message;  // each data to msg 
   
-      return (
-        <tr>
-          <td>{message.order}</td>
-          <td>{message.name}</td>
-          <td>{message.message}</td>
-        </tr>
-      );
-    }
-  } 
+//       return (
+//         <tr>
+//           <td>{message.order}</td>
+//           <td>{message.name}</td>
+//           <td>{message.message}</td>
+//         </tr>
+//       );
+//     }
+//   } 
 
-class ListTable extends React.Component {
-    render() {
-      const rows = [];       
-      this.props.messages.forEach((eachLine) => {  
-        rows.push(
-          <ListRow message = {eachLine}   // 받아먹을 변수를 정의해서 값 할당
-          key={eachLine.order} />         // 마지막 라인에 추가됨
-        ); 
-      });
+// class ListTable extends React.Component {
+//     render() {
+//       const rows = [];       
+//       this.props.messages.forEach((eachLine) => {  
+//         rows.push(
+//           <ListRow message = {eachLine}   // 받아먹을 변수를 정의해서 값 할당
+//           key={eachLine.order} />         // 마지막 라인에 추가됨
+//         ); 
+//       });
   
-      return (
-        <table>
-          <thead>
-            <tr>
-              <th>Order</th>
-              <th>Name</th>
-              <th>Message</th>
-            </tr>
-          </thead>
-          <tbody>{rows}</tbody>
-        </table>
-      );
-    }
-  }
+//       return (
+//         <table>
+//           <thead>
+//             <tr>
+//               <th>#</th>
+//               <th>Name</th>
+//               <th>Message</th>
+//             </tr>
+//           </thead>
+//           <tbody>{rows}</tbody>
+//         </table>
+//       );
+//     }
+//   }
     
-  class ListMessageTable extends React.Component {
-    render() {
-      return (
-        <div>
-          <Header />
-          <ListTable messages={this.props.messages} />
-          <Footer />
-        </div>
-      );
-    }
-  } 
+//   class ListMessageTable extends React.Component {
+//     render() {
+//       return (
+//         <div>
+//           <Header />
+//           <ListTable messages={this.props.messages} />
+//           <Footer />
+//         </div>
+//       );
+//     }
+//   } 
   
   const MESSAGES = [
     {order: '1', name: 'Bill', message: 'Hi All!'}, 

@@ -14,10 +14,9 @@ class Footer extends React.Component {
  
 const StyledCopyright = styled.h3`  
     font-family:  Calibri, Helvetica, sans-serif;
-    margin: 1%;
-    color: black;   
-    padding: 5%;
+    margin: 0%;
+    color: black;    
     text-align: right;
-    width: 70%;
+    width: 80%;
 `;
 export default Footer;
