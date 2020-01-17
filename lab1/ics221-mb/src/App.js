@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron'; 
 
-class ListMessageTable extends React.Component {
+class App extends React.Component {
     render() { 
       return (
         <div>
@@ -36,4 +36,4 @@ class ListMessageTable extends React.Component {
     }
   } 
 
-export default ListMessageTable;
+export default App;
