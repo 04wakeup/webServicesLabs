@@ -1,7 +1,8 @@
 import React from 'react'; 
 import './index.css'; 
 import ListRow from './ListRow' 
- 
+import Table from 'react-bootstrap/Table'; 
+
 class ListTable extends React.Component {
     render() {
       const rows = [];       
@@ -11,9 +12,9 @@ class ListTable extends React.Component {
           key={eachLine.order} />         // 마지막 라인에 추가됨
         ); 
       });
-  
+ 
       return (
-        <table>
+        <Table striped bordered hover>
           <thead>
             <tr>
               <th>{this.props.colText1}</th>
@@ -22,7 +23,7 @@ class ListTable extends React.Component {
             </tr>
           </thead>
           <tbody>{rows}</tbody>
-        </table>
+        </Table>
       );
     }
   }
