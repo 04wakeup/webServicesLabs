@@ -3,6 +3,8 @@ import './index.css';
 import ListTable from './ListTable'
 import Header from './Header'
 import Footer from './Footer'
+import AddMessage from './AddMessage'
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -18,6 +20,11 @@ class App extends React.Component {
                 <Jumbotron>
                   <Header text={this.props.headerText} />
                 </Jumbotron>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                 <AddMessage />
               </Col>
             </Row>
             <Row>
