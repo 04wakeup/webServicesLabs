@@ -5,7 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import * as yup from 'yup';
+import { Formik } from 'formik';
 
+// Model
 const schema = yup.object({
   name: yup
   .string()
@@ -15,39 +17,93 @@ const schema = yup.object({
   .matches(/[A-za-z]{2,}/, 'Invalid name. Use Upper or Lowercase letters only.')
   .required('Your name is required.'),
   msg: yup
-  .string()
+  .string() 
   .trim()
   .min(3, 'Your message must be at least 3 characters!')
   .max(20, 'Your message must be no more than 20 characters.')
   .required('A message is required.')
   });
 
+const handleFormData = (values, actions) => { console.log(values); }
+
+// Form (not Form Component which is this whole file)
 class AddMessage extends React.Component {
   
     render() { 
       return (
-        <Form>
-          <Card className="mb-4">  
-          <Card.Body> 
-              <Card.Title>Add a Message:</Card.Title>  
-              <Form.Row className="align-items-center">
-                <Form.Group as={Col} controlId="name"> 
-                    <Form.Label>Enter Name:</Form.Label>
-                    <Form.Control placeholder="Your name" /> 
-                </Form.Group>
+        <Formik validationSchema={schema} onSubmit={handleFormData} initialValues={{ name: '', msg: ''}}>
+            { // Your Form is passed to Formik as a function
+              ({
+                handleSubmit,
+                handleChange,
+                handleBlur,
+                values,
+                touched,
+                errors,
+              }) => (
+                <Form noValidate onSubmit={handleSubmit}>
+                  <Card className="mb-4">  
+                  <Card.Body> 
+                      <Card.Title>Add a Message:</Card.Title>  
+                      <Form.Row className="align-items-center">
+                        <Form.Group as={Col} controlId="name"> 
+                            <Form.Label>Enter Name:</Form.Label>
+                            <Form.Control placeholder="Your name" 
+                                          value={values.name} 
+                                          onChange={handleChange} 
+                                          onBlur={handleBlur}
+                                          isValid={touched.name && !errors.name}
+                                          isInvalid={touched.name && errors.name} /> 
+                            <Form.Control.Feedback type="invalid">
+                              {errors.name}
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
-                <Form.Group as={Col} md={6} controlId="name"> 
-                    <Form.Label>Enter Message:</Form.Label>
-                    <Form.Control placeholder="Your message" /> 
-                </Form.Group>
+                        <Form.Group as={Col} md={6} controlId="msg"> 
+                            <Form.Label>Enter Message:</Form.Label>
+                            <Form.Control placeholder="Your message" 
+                                          value={values.msg} 
+                                          onChange={handleChange} 
+                                          onBlur={handleBlur}
+                                          isValid={touched.name && !errors.msg}
+                                          isInvalid={touched.name && errors.msg} /> 
+                            <Form.Control.Feedback type="invalid">
+                              {errors.msg}
+                            </Form.Control.Feedback>
+                        </Form.Group>
 
-                <Col className="mt-3">
-                  <Button variant="primary" type="submit">Submit</Button>
-                </Col>
-              </Form.Row>
-            </Card.Body>
-          </Card>
-        </Form>
+                        <Col className="mt-3">
+                          <Button variant="primary" type="submit">Submit</Button>
+                        </Col>
+                      </Form.Row>
+                    </Card.Body>
+                  </Card>
+                </Form>
+              )
+            }
+        </Formik> 
+        // <Form>
+        //   <Card className="mb-4">  
+        //   <Card.Body> 
+        //       <Card.Title>Add a Message:</Card.Title>  
+        //       <Form.Row className="align-items-center">
+        //         <Form.Group as={Col} controlId="name"> 
+        //             <Form.Label>Enter Name:</Form.Label>
+        //             <Form.Control placeholder="Your name" /> 
+        //         </Form.Group>
+
+        //         <Form.Group as={Col} md={6} controlId="name"> 
+        //             <Form.Label>Enter Message:</Form.Label>
+        //             <Form.Control placeholder="Your message" /> 
+        //         </Form.Group>
+
+        //         <Col className="mt-3">
+        //           <Button variant="primary" type="submit">Submit</Button>
+        //         </Col>
+        //       </Form.Row>
+        //     </Card.Body>
+        //   </Card>
+        // </Form>
       );
     }
   }  
