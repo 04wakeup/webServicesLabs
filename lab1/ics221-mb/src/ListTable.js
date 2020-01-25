@@ -5,11 +5,15 @@ import Table from 'react-bootstrap/Table';
 
 class ListTable extends React.Component {
     render() {
-      const rows = [];       
-      this.props.messages.forEach((eachLine) => {  
+      const rows = [];     
+      var i = 0;     // it's for key and line number 
+      this.props.messages.forEach((eachLine) => {    
+        i = i + 1; 
         rows.push(
-          <ListRow message = {eachLine}   // 받아먹을 변수를 정의해서 값 할당
-          key={eachLine.order} />         // 마지막 라인에 추가됨
+          <ListRow message = {eachLine}   // 받아먹을 변수를 정의해서 값 할당 
+                   key={i} 
+                   seq={i}
+          />
         ); 
       });
  
@@ -17,9 +21,9 @@ class ListTable extends React.Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>{this.props.colText1}</th>
-              <th>{this.props.colText2}</th>
-              <th>{this.props.colText3}</th>
+              <th>#</th>
+              <th>Name</th>
+              <th>Message</th>
             </tr>
           </thead>
           <tbody>{rows}</tbody>

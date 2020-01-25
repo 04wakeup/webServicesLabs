@@ -1,14 +1,15 @@
 import React from 'react'; 
-import './index.css'; 
-import ListTable from './ListTable'
-import Header from './Header'
-import Footer from './Footer'
-import AddMessage from './AddMessage'
+import './index.css';  
+import Header from './Header';
+import Footer from './Footer'; 
+import Contents from './Contents';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Jumbotron from 'react-bootstrap/Jumbotron'; 
+
+
 
 class App extends React.Component {
     render() { 
@@ -16,22 +17,19 @@ class App extends React.Component {
         <div>
           <Container>
             <Row>
-              <Col>
+              <Col> 
                 <Jumbotron>
                   <Header text={this.props.headerText} />
                 </Jumbotron>
               </Col>
-            </Row>
-            <Row>
+            </Row>   
+            
+            <Row> 
               <Col>
-                 <AddMessage />
+                <Contents />
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <ListTable messages={this.props.messages} colText1={this.props.colText1} colText2={this.props.colText2} colText3={this.props.colText3}  />
-              </Col>
-            </Row>
+            </Row> 
+
             <Row>
               <Col>
                   <Footer text={this.props.footerText} />
