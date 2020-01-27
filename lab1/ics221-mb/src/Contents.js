@@ -1,20 +1,6 @@
 import React from 'react';  
 import AddMessage from './AddMessage';
 import ListTable from './ListTable';
-
-// const MESSAGES = [
-//     {order: '1', name: 'Bill', message: 'Hi All!'}, 
-//     {order: '2', name: 'Ann', message: 'ICS 221 is fun'},
-//     {order: '3', name: 'Johnny', message: 'I\'m stranded!'},
-//     {order: '4', name: 'Barb', message: 'Hi'},
-//     {order: '5', name: 'Frank', message: 'Who\'s gired?'},
-//     {order: '6', name: 'Sarah', message: 'I heart React'}
-//   ]; 
- 
-  // const MESSAGES = [   --> const doen't change with state!!!
-  //   {order: '1', name: 'Bill', message: 'Hi All!'}, 
-  //   {order: '2', name: 'Ann', message: 'ICS 221 is fun'}
-  // ]; 
   
 class Contents extends React.Component {
  constructor(props){
