@@ -45,10 +45,9 @@ paths:
         "400":
           description: Bad Request
     post:
-      summary: List all the messages
+      summary: Add a new messages
       description: |
-        List all the messages in the order
-        they were posted (newest at top)
+        Add new message
       requestBody:
         description: Message's data
         content:
@@ -57,7 +56,7 @@ paths:
               $ref: "#/components/schemas/message"
       responses:
         "201":
-          description: All the messages 
+          description: New message posted 
           content:
             application/json:
               schema:
