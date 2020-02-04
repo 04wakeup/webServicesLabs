@@ -13,7 +13,7 @@ mongoose.connection.on('connected', () => {
     });
 
 // print error message to console
-// if there is a problem connecting
+// if there is a problem connecting  
 mongoose.connection.on('error', (err) => {
     console.log('Mongoose connection error:' + err);
     });
@@ -21,3 +21,5 @@ mongoose.connection.on('error', (err) => {
 mongoose.connection.on('disconnected', () => {
 console.log('Mongoose disconnected');
 });
+
+require('./models/message_schema');
