@@ -39,7 +39,7 @@ const addNewMessage = async (req, res) => {
 
     /* lab3(ok) -> lab4(changed for using DB)
     try {  
-        let message = await messageSchema.validate(req.body);  
+        let message = await messageSchema.validate(req.body);   /// (1) 여기선 모든 데이터를 반환함
         messages.unshift(message);
 
         // TODO: add message as first element of array and
@@ -56,6 +56,7 @@ const addNewMessage = async (req, res) => {
          Request is either missing or malformed.');
         }
     */
+    //  (1) 여기선 넣은 데이터 한건 성공한것만 답변함, 리턴값 수/타입이 완전 틀림
    messageModel
         .create( req.body, (error, message) => {
                 if (error) {

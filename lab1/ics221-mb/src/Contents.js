@@ -19,7 +19,7 @@ class Contents extends React.Component {
       .then(response => response.json())
       .then((data) => {
           this.setState({MESSAGES: data})
-          console.log(this.state.MESSAGES)
+          // console.log(this.state.MESSAGES)
       })
       .catch(console.log)
 }
@@ -44,10 +44,19 @@ class Contents extends React.Component {
             throw new HTTPError('Fetch error:', response.statusText);
           }
         
+          // console.log('post response is ok received $$$$$$$$$$$$$');
           const parsed = await response.json(); 
+          // here ->>> const results = Array.from(this.props.messages);
+          const _parsed = JSON.stringify(parsed)  // convert object object to JSON 
+          // console.log('the data will be 00>>>>>>>_+_+_+_+_+__:' + typeof(parsed)   );
+          // console.log('the data will be 11>>>>>>>_+_+_+_+_+__:' + typeof(_parsed)   );
+          // console.log('the data will be 22 >>>>>>>_+_+_+_+_+__:' + typeof(this.state.MESSAGES)    ); 
+          // Question1: why parsed got error? below expression is working...
+          // Answer -> make it as array using [] !!!
           this.setState(   
-                {MESSAGES: parsed}   // assign new data for refresh
+            {MESSAGES:[parsed, ...this.state.MESSAGES]}   // assign new data for refresh MESSAGES 에 얹어라..
             );
+            // console.log('set State is completed #################');
         })();
   }
    

@@ -5,8 +5,7 @@ import Table from 'react-bootstrap/Table';
 
 class ListTable extends React.Component {
     render() {
-      const rows = [];     
-      var i = 0;     // it's for key and line number 
+      const rows = [];      
       // option 1: count the row number
       // this.props.messages.forEach((eachLine) => {    
       //   i = i + 1; 
@@ -18,6 +17,8 @@ class ListTable extends React.Component {
       //   ); 
       // });
       // option 2: use map, index for count the row number
+      // console.log('table is rendering!!!!!!!');
+      // console.log('the data is ' + this.props.messages);
       this.props.messages.map((message, index) => {
         rows.push(
             <ListRow message = {message}
