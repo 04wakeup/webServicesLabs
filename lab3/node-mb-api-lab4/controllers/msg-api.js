@@ -36,6 +36,8 @@ const getAllMessages = (req, res) => {
 // Post Request Handler
 const addNewMessage = async (req, res) => {  
     // console.log(messageSchema.validate(req.body)); 
+
+    /* lab3(ok) -> lab4(changed for using DB)
     try {  
         let message = await messageSchema.validate(req.body);  
         messages.unshift(message);
@@ -53,6 +55,18 @@ const addNewMessage = async (req, res) => {
         .send('Bad Request. The message in the body of the \
          Request is either missing or malformed.');
         }
+    */
+   messageModel
+        .create( req.body, (error, message) => {
+                if (error) {
+                    res
+                    .status(400)
+                    .send('Bad Request. The message in the body of the \
+                    Request is either missing or malformed.');
+                } else {
+                    res.status(201).json(message);
+                }
+                });
 };
 
 module.exports = {
