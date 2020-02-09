@@ -29,8 +29,7 @@ const messageSchema = new mongoose.Schema({
     },
     msg: {
     type: String,
-    trim: true,
-    match: /[A-Za-z]{2,}/,
+    trim: true, 
     minlength: 3,
     maxlength: 20,
     required: true
