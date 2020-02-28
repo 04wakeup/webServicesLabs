@@ -3,6 +3,9 @@ info:
   title: Message Board API
   version: "1.0"
 components:
+  responses:
+    TooManyRequests:
+      description: Too many requests
   schemas:
     message:
       type: object
@@ -44,6 +47,8 @@ paths:
                    $ref: "#/components/schemas/message" 
         "400":
           description: Bad Request
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
     post:
       summary: Add a new messages
       description: |
@@ -63,4 +68,6 @@ paths:
                 $ref: "#/components/schemas/message"
         "400":
           description: Bad Request. The message is the body of the Request is either missing or malformed.
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
           
