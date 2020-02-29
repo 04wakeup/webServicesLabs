@@ -3,7 +3,17 @@ info:
   title: Message Board API
   version: "1.0"
 components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      schema: basic
   responses:
+    UnauthorizedError:
+      description: Authentication information is missing or invalid
+      headers:
+        WWW_Authenticate:
+          schema:
+            type: string
     TooManyRequests:
       description: Too many requests
   schemas:
@@ -77,6 +87,8 @@ paths:
         "429":
           $ref: "#/components/responses/TooManyRequests"
     post:
+      security:
+        - basicAuth: []
       summary: Add a new messages
       description: |
         Add new message
@@ -95,6 +107,8 @@ paths:
                 $ref: "#/components/schemas/message"
         "400":
           description: Bad Request. The message is the body of the Request is either missing or malformed.
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
         "429":
           $ref: "#/components/responses/TooManyRequests"
   /users:
