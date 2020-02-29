@@ -54,7 +54,7 @@ components:
           minLength: 8
           maxLength: 64
           description: credential for login
-          example: P@ssword!
+          example: p@ssword!
 paths: 
   /messages:
     description: All the messages

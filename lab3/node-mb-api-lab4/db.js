@@ -23,3 +23,4 @@ console.log('Mongoose disconnected');
 });
 
 require('./models/message_schema');
+require('./models/user_schema');
