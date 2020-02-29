@@ -28,6 +28,33 @@ components:
           minLength: 3
           maxLength: 20
           example: Hello World!
+    user:
+      type: object
+      description: an user
+      required: 
+        - email
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          minLength: 2
+          maxLength: 10
+          pattern: "[A-Za-z]{2,}"
+          description: Name of an user
+          example: jameschoi
+        email:
+          type: string
+          format: email
+          description: e-mail address
+          example: ics012@camosun.bc.ca
+        password:
+          type: string
+          format: password
+          minLength: 8
+          maxLength: 64
+          description: credential for login
+          example: P@ssword!
 paths: 
   /messages:
     description: All the messages
@@ -70,4 +97,30 @@ paths:
           description: Bad Request. The message is the body of the Request is either missing or malformed.
         "429":
           $ref: "#/components/responses/TooManyRequests"
+  /users:
+    description: All Users
+    post:
+      summary: Add a new user
+      description: |
+        Add a new user
+      requestBody: 
+        description: User's data
+        content: 
+          application/json:
+            schema:
+              $ref: "#/components/schemas/user"
+      responses:
+        "201":
+          description: New user added
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/user"
+        "400":
+          description: Bad Request. The user information is the body of the Request is either missing or malformed.
+        "403": 
+          description: Forbiden. Username or email already exists.
+        "429":
+          description: Too Many Requests
+
           
