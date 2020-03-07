@@ -44,9 +44,27 @@ const registerNewUser = (req, res) => {
         }
     });
 }
+ 
 
+const getUser = (req, res) => {  
+    userModel
+    .findOne({
+        '$or': [
+            { email: req.body.email },
+            { username: req.body.username }
+        ]
+    })
+    .exec( (error, user) => {
+        if (error) {
+            res.status(400).send('Bad Request');
+        } else {
+            res.status(200).json(user);
+        }
+    });
+}
 
 passport.use(new BasicStrategy(
+   
     (username, password, done) => {
     userModel
     .findOne({
@@ -57,59 +75,17 @@ passport.use(new BasicStrategy(
     })
     .exec( async (error, user) => {
         if (error) return done(error);
-        
+        console.log("user-api.js");
         // user wasn't found
         if (!user) return done(null, false);
         
-        // user was found, see if it's a valid password
+        // user was found, see if it's a valid password , return user(OK)
         if (!await user.verifyPassword(password)) { return done(null, false); }
         return done(null, user);
     });
     }
     ));
-   
-// const registerNewUser = (req, res) => {
-//     //res.status(200).send('Successful API New User POST Request');
-//     userModel
-//     .findOne({
-//         '$or': [
-//             { email: req.body.email },
-//             { username: req.body.username }
-//         ]
-//     })
-//     .exec( (error, user) => {
-//         // bad email or username
-//         if (error){
-//             return res 
-//             .status(400)
-//             .send('Bad Request. The user in the body of the \
-//             Request is either missing or malformed.');
-//         } else if (user) {
-//             // user found, this is a duplicate email of username
-//             return res 
-//             .status(403)
-//             .send('Forbidden. Username or email \
-//             already exists.');
-//         } else {
-//             // got to this point, no errors or duplicates found
-//             userModel 
-//             .create(req.body, (error, user) => {  // create a new user
-//                 if (error) {
-//                     res 
-//                     .status(400)
-//                     .send('Bad Request. The user in the body of the \
-//                     Request is eigher missing or malformed.');
-//                 } else {
-//                     res.status(201).json(user);
-//                 }
-//             })
-//         }
-
-//     }
-
-//     )
-// }
-
+    
 
 module.exports = {
     registerNewUser

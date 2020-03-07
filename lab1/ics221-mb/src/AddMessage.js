@@ -35,6 +35,8 @@ class AddMessage extends React.Component {
 }
   
    handleFormData = (values, actions) => {   // doesn't need const at the beginning, as it is located in a class
+      
+
       this.newMessageCallback(values);
       actions.setSubmitting(false);    
 }

@@ -112,7 +112,24 @@ paths:
         "429":
           $ref: "#/components/responses/TooManyRequests"
   /users:
-    description: All Users
+    description: All Users 
+    get:
+      summary: Verify ID
+      description: |
+        return validated ID
+      responses:
+        "200":
+           description: ID returned 
+           content:
+             application/json:
+               schema:
+                 type: array
+                 items:
+                   $ref: "#/components/schemas/user"
+        "400":
+          description: Bad Request
+        "429":
+          $ref: "#/components/responses/TooManyRequests"
     post:
       summary: Add a new user
       description: |
