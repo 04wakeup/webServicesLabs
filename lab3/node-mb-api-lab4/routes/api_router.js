@@ -1,3 +1,4 @@
+const passport = require('passport');
 const express = require('express');
 const router = express.Router(); // object that handles routing.
 
@@ -6,9 +7,10 @@ const userAPIController = require('../controllers/user-api');
 
 router.route('/messages')
  .get(msgAPIController.getAllMessages)
- .post(msgAPIController.addNewMessage);
+ .post(passport.authenticate('basic', { session: false }),msgAPIController.addNewMessage);
 
- router.route('/users') 
+router.route('/users') 
  .post(userAPIController.registerNewUser);
 
 module.exports = router;
+ 
