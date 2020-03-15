@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 // connect to locally running MongoDB instance
 let dbURI = 'mongodb://localhost:27017/msgs_db';
+
+// lab7
+if (process.env.NODE_ENV == 'production'){
+    dbURI = process.env.MONGO_URL;
+}
+
 mongoose.connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
