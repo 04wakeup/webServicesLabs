@@ -45,8 +45,12 @@ const registerNewUser = (req, res) => {
     });
 }
  
+// Login handler
+const login = (req, res) =>{
+    res.status(200).send('Successful API Login Request');
+}
 
-const getUser = (req, res) => {  
+const getUser = (req, res) => {  // maybe not used???
     userModel
     .findOne({
         '$or': [
@@ -54,7 +58,7 @@ const getUser = (req, res) => {
             { username: req.body.username }
         ]
     })
-    .exec( (error, user) => {
+    .exec((error, user) => {
         if (error) {
             res.status(400).send('Bad Request');
         } else {
@@ -63,8 +67,7 @@ const getUser = (req, res) => {
     });
 }
 
-passport.use(new BasicStrategy(
-   
+passport.use(new BasicStrategy( 
     (username, password, done) => {
     userModel
     .findOne({
@@ -88,6 +91,7 @@ passport.use(new BasicStrategy(
     
 
 module.exports = {
-    registerNewUser
+    registerNewUser, 
+    login
 };
  

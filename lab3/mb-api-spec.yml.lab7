@@ -2,11 +2,11 @@ openapi: "3.0.2"
 info:
   title: Message Board API
   version: "1.0"
-components: 
+components:
   securitySchemes:
     basicAuth:
       type: http
-      scheme: basic
+      schema: basic
   responses:
     UnauthorizedError:
       description: Authentication information is missing or invalid
@@ -178,7 +178,7 @@ paths:
                   type: string
                   maxLength: 64
                   description: A registered user's password.
-                  example: X?keyr7T
+                  examle2: X?keyr7T
       responses:
         "200":
           description: Logged in
