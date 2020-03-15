@@ -3,6 +3,7 @@
   "version": "0.0.5",
   "private": true,
   "scripts": {
+    "dev": "nodemon ./bin/www",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
@@ -18,5 +19,8 @@
     "morgan": "~1.9.1",
     "passport": "^0.4.1",
     "passport-http": "^0.3.0"
+  },
+  "engines": {
+    "node": "12.14.x"
   }
 }
