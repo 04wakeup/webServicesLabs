@@ -10,7 +10,7 @@ const userAPIController = require('../controllers/user-api');
 // uses the Basic strategy that you configured in user-api.js.
 router.route('/messages')
  .get(msgAPIController.getAllMessages)
- .post(passport.authenticate('basic', { session: false }),msgAPIController.addNewMessage);
+ .post(passport.authenticate('jwt', { session: false }),msgAPIController.addNewMessage);
 
 router.route('/users') 
  .post(userAPIController.registerNewUser)

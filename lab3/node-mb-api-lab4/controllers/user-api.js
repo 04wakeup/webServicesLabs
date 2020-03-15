@@ -6,6 +6,13 @@ const LocalStrategy = require('passport-local');
 const mongoose = require('mongoose');
 const userModel = mongoose.model('user');
 
+// lab7: for verifying JWT tokens
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+let jwtOptions = {};
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.secretOrKey = process.env.JWT_SECRET;
+
 
 const registerNewUser = (req, res) => {
     //res.status(200).send('Successful API New User POST Request');
@@ -107,6 +114,24 @@ passport.use(new LocalStrategy(
     }
     ));
     
+// for token authentication
+passport.use(new JwtStrategy(
+    jwtOptions, (jwt_payload, done) => {
+        userModel
+        .findById(jwt_payload.sub)
+        .exec((error, user) => {
+            // error in searching
+            if (error) return done(error);
+            if (!user){
+                // user not found
+                return done(null, false);
+            } else {
+                // user found 
+                return done(null, user);
+            }
+        }) 
+    }
+));
 
 module.exports = {
     registerNewUser, 

@@ -1,12 +1,16 @@
-openapi: "3.0.2"
+openapi: "3.0.3"
 info:
   title: Message Board API
   version: "1.0"
 components: 
   securitySchemes:
-    basicAuth:
+    # basicAuth:
+    #   type: http
+    #   scheme: basic
+    bearerAuth:
       type: http
-      scheme: basic
+      scheme: bearer
+      bearerFormat: JWT
   responses:
     UnauthorizedError:
       description: Authentication information is missing or invalid
@@ -88,7 +92,8 @@ paths:
           $ref: "#/components/responses/TooManyRequests"
     post:
       security:
-        - basicAuth: []
+        # - basicAuth: []
+        - bearerAuth: []
       summary: Add a new messages
       description: |
         Add new message
