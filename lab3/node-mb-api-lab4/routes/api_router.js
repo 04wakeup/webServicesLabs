@@ -19,9 +19,8 @@ router.route('/users')
  });
 //  .get(passport.authenticate('basic', { session: false }),msgAPIController.getUser);
  
-router.route('/login')
- .post(userAPIController.login);
-
+router.route('/login') 
+ .post(passport.authenticate('local', {session: false}), userAPIController.login);
 
 module.exports = router;
  

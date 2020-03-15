@@ -1,5 +1,6 @@
 const passport = require('passport');
-const BasicStrategy = require('passport-http').BasicStrategy;
+// const BasicStrategy = require('passport-http').BasicStrategy; // not used from lab7
+const LocalStrategy = require('passport-local');
 
 const mongoose = require('mongoose');
 const userModel = mongoose.model('user');
@@ -67,7 +68,7 @@ const getUser = (req, res) => {  // maybe not used???
     });
 }
 
-passport.use(new BasicStrategy( 
+passport.use(new LocalStrategy( 
     (username, password, done) => {
     userModel
     .findOne({
